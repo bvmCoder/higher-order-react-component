@@ -7,6 +7,103 @@ const ReactDOM = require("react-dom")
 
 const _ById = (id) => document.getElementById(id)
 
+class Badge extends Component {
+  constructor (props) {
+    super(props)
+  }
+  render () {
+    console.log(this)
+    return (
+      <button className="btn btn-primary" type="button">
+        {this.props.heading} <span className="badge">{this.props.shonkha}</span>
+      </button>
+    )
+  }
+}
+
+class ThumbNail extends Component {
+  constructor (props) {
+    super(props)
+  }
+  render () {
+    console.log(this)
+    return (
+      <div className="row">
+        <div className="col-sm-6 col-md-4">
+          <div className="thumbnail">
+            <img src={this.props.imageUrl} alt="..." />
+            <div className="caption">
+              <h3>{this.props.header}</h3>
+              <p>{this.props.description}</p>
+              <p><Badge heading={this.props.title} shonkha={this.props.number} /></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+
+class ThumbNailList extends Component {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    let list = this.props.thumbNailData.map(function (thumbNailProps, index) {
+      return <ThumbNail {...thumbNailProps} key={index} />
+    })
+
+    return (
+      <div>
+        {list}
+      </div>
+    )
+  }
+}
+
+
+var options = {
+    thumbNailData:  [{
+      title: 'Show Courses',
+      number: 12,
+      header: 'Learn React',
+      description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
+      imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+    },{
+      title: 'Show Courses',
+      number: 25,
+      header: 'Learn Gulp',
+      description: 'Gulp will speed up your development workflow.  Gulp will speed up your development workflow.  Gulp will speed up your development workflow.',
+      imageUrl: 'http://brunch.io/images/others/gulp.png'
+    }]
+  }
+
+ReactDOM.render(<ThumbNailList {...options} />, _ById('content'))
+/*
+class Badge extends Component {
+  constructor (props) {
+    super(props)
+  }
+  render () {
+    console.log(this)
+    return (
+      <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    )
+  }
+}
+
+let options = {
+  title : "Inbox",
+  number : 32
+}
+
+ReactDOM.render(<Badge {...options} />, _ById('content'))
+
+*/
 /*
 class Main extends React.Component {
   render() {
@@ -20,38 +117,6 @@ class Main extends React.Component {
 const app = document.getElementById('app');
 ReactDOM.render(<Main />, app);
 */
-
-
-class HelloWorld extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  render () {
-    return (
-      <p>Hello World</p>
-    )
-  }
-}
-
-/*
-class HelloWorld extends Component {
-  constructor (props) {
-    super(props)
-  }
-  render () {
-    return (
-      <div className="container">
-        <div className="label label-default">
-          Hello Reacting World!
-        </div>
-      </div>
-    )
-  }
-}
-*/
-
-ReactDOM.render(<HelloWorld />, _ById('content'))
 
 /*
 const HoverableContainer = ChildComponent => {
