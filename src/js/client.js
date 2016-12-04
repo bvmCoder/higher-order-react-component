@@ -1,5 +1,11 @@
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
+// import React, { Component } from "react"
+// import ReactDOM from "react-dom"
+
+const React = require("react")
+const { Component } = React
+const ReactDOM = require("react-dom")
+
+const _ById = (id) => document.getElementById(id)
 
 /*
 class Main extends React.Component {
@@ -11,13 +17,41 @@ class Main extends React.Component {
     );
   }
 }
-
-
 const app = document.getElementById('app');
 ReactDOM.render(<Main />, app);
 */
 
-const _ById = (id) => document.getElementById(id)
+
+class HelloWorld extends Component {
+  constructor (props) {
+    super(props)
+  }
+
+  render () {
+    return (
+      <p>Hello World</p>
+    )
+  }
+}
+
+/*
+class HelloWorld extends Component {
+  constructor (props) {
+    super(props)
+  }
+  render () {
+    return (
+      <div className="container">
+        <div className="label label-default">
+          Hello Reacting World!
+        </div>
+      </div>
+    )
+  }
+}
+*/
+
+ReactDOM.render(<HelloWorld />, _ById('content'))
 
 /*
 const HoverableContainer = ChildComponent => {
@@ -27,7 +61,6 @@ const HoverableContainer = ChildComponent => {
             this.state = {
                 isHovered: false
             }
-
             render() {
                 return (
                   <ChildComponent {...this.props } {...this.state }
@@ -36,13 +69,11 @@ const HoverableContainer = ChildComponent => {
                   />
                 )
             }
-
             handleToggleHoverOn(){
               this.state = {
                   isHovered: true
               }
             }
-
             handleToggleHoverOff(){
               this.state = {
                   isHovered: false
@@ -51,9 +82,9 @@ const HoverableContainer = ChildComponent => {
         }
     }
 }
-
 */
 
+/*
 // HOVER CONTAINER
 function HoverableContainer(ChildComponent) {
     return class HoverableContainer extends Component {
@@ -196,4 +227,4 @@ Hoverable.defaultProps = {
 }
 
 ReactDOM.render(<Dropdown />, _ById('content'))
-
+*/
