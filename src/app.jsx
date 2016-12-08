@@ -1,10 +1,7 @@
-const React = require("react")
-const { Component } = React
-const ReactDOM = require("react-dom")
+var React = require('react')
+var ThumbnailList = require('./thumbnail-list')
 
-const ThumbnailList = require('./thumbnail-list')
-
-const options = {
+var options = {
   thumbnailData:  [{
     title: 'Show Courses',
     number: 120,
@@ -18,6 +15,8 @@ const options = {
     description: 'Gulp will speed up your development workflow.  Gulp will speed up your development workflow.  Gulp will speed up your development workflow.',
     imageUrl: 'http://brunch.io/images/others/gulp.png'
   }]
-}
+};
 
-ReactDOM.render(<ThumbNailList {...options} />, _ById('content'))
+
+var element = React.createElement(ThumbnailList, options)
+React.render(element, document.querySelector('.container'))

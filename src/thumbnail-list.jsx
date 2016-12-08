@@ -1,22 +1,19 @@
-const React = require("react")
-const { Component } = React
+var React = require('react')
+var Thumbnail = require('./thumbnail')
 
-const Thumbnail = require('./thumbnail')
+var ThumbnailList = React.createClass({
+  render: function() {
+    var list = this.props.thumbnailData.map(function(thumbnailProps){
+      return <Thumbnail {...thumbnailProps} />
+    });
 
-class ThumbNailList extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  render () {
-    let list = this.props.thumbNailData.map(function (thumbNailProps, index) {
-      return <ThumbNail {...thumbNailProps} key={index} />
-    })
-
-    return (
+    return(
       <div>
         {list}
       </div>
     )
   }
-}
+})
+
+
+module.exports = ThumbnailList
